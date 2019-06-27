@@ -6,17 +6,16 @@ const app = express()
 
 //Other Imports
 require('dotenv').config()
-const PORT = process.env.PORT || 8000
+// const PORT = process.env.PORT || 8000
 
 //Middleware
 app.use(express.json())
 app.use(morgan('dev'))
 
-
 //Routes
 
 //Database
-mongoose.connect('mongod://localhost:27017/blog', {useNewUrlParser: true, useCreateIndex: true}, () => {
+mongoose.connect('mongod://localhost:27017/strapi-blog', {useNewUrlParser: true}, () => {
     console.log(`The db is connected!`)
 })
 
@@ -27,6 +26,6 @@ app.use((err, req, res, next) => {
 })
 
 //Server
-app.listen(PORT, () =>{
-    console.log(`Server listening on port ${PORT}`)
+app.listen(8000, () =>{
+    console.log(`Server listening on port ${8000}`)
 })
