@@ -1,0 +1,35 @@
+{
+  "connection": "default",
+  "collectionName": "blogpost",
+  "info": {
+    "name": "blogpost",
+    "description": "An individual blog post"
+  },
+  "options": {
+    "timestamps": [
+      "createdAt",
+      "updatedAt"
+    ]
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "content": {
+      "required": true,
+      "type": "text"
+    },
+    "media": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "author": {
+      "model": "user",
+      "via": "blogposts",
+      "plugin": "users-permissions"
+    }
+  }
+}
