@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import BlogContainer from './Container/Home/Home'
+import BlogPost from '../../Presentational/BlogPost/BlogPost'
 import Strapi from 'strapi-sdk-javascript'
 const strapi = new Strapi('http://localhost:1337')
 
-class App extends Component {
+
+class BlogContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -22,8 +23,17 @@ class App extends Component {
 
     render() {
         return (
-            
+            <div>
+                {this.state.posts.map(post => (
+                    <BlogPost 
+                        key= { post.id }
+                        title= { post.title }
+                        content= { post.content }
+                    />
+                ))}
+            </div>
         )
     }
 }
-export default App
+
+export default BlogContainer
